@@ -10,7 +10,7 @@ public class LoginPage extends BasePage {
     private final By loginLocator = By.name("campaigntypeform:j_idt14");
 
 
-    public void LoginFrom(String email, String password) {
+    public void Login(String email, String password) {
         type(emailLocator,email);
         type(passLocator, password);
         click(loginLocator);
