@@ -3,8 +3,12 @@ package BasePage;
 import Utils.Driver;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class BasePage {
 
@@ -26,6 +30,19 @@ public class BasePage {
 
     protected String getText(By locator) {
         return getWait().until(ExpectedConditions.visibilityOfElementLocated(locator)).getText();
+    }
+
+    protected void waitForTextToBePresent(By locator, String expectedText) {
+        getWait().until(ExpectedConditions.textToBePresentInElementLocated(locator, expectedText));
+    }
+
+    protected void clear(By locator) {
+        getWait().until(ExpectedConditions.visibilityOfElementLocated(locator)).clear();
+    }
+
+    protected List<String> getTextInList(By locator) {
+        List<WebElement> elements = getWait().until(ExpectedConditions.visibilityOfAllElementsLocatedBy(locator));
+        return elements.stream().map(WebElement::getText).collect(Collectors.toList());
     }
 
 }
