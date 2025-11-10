@@ -4,9 +4,6 @@ import org.openqa.selenium.By;
 import org.testng.reporters.EmailableReporter2;
 import utils.Driver;
 
-import javax.naming.Name;
-import javax.swing.plaf.PanelUI;
-
 public class CreateNewCustomer {
     private final By nameFieldLocator = By.name("j_idt70:name");
     private final By emailCustomerFieldLocator = By.name("j_idt70:email");
